@@ -48,8 +48,9 @@
                   %a{href: "#{logout_path}"}Log out
                 %li
                   %a{href: "#{signup_path}"}Sign up
+      .flash
+        = flash_messages
 
-      .row
-        = yield
+      = yield
 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
