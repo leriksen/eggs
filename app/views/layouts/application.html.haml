@@ -38,16 +38,18 @@
                 %li
                   %a{href: "#"} Tray
           %ul.nav.navbar-nav.navbar-right
-            %li.dropdown
-              %a.dropdown-toggle{href: "#", data: {toggle: "dropdown"}}
-                User <span class="caret"></span>
-              %ul.dropdown-menu
-                %li
-                  %a{href: "#{login_path}"}Log in
-                %li
-                  %a{href: "#{logout_path}"}Log out
-                %li
-                  %a{href: "#{signup_path}"}Sign up
+            - if current_user
+              %li.dropdown
+                %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
+                  != "Logged in as #{current_user}<span class='caret'></span>"
+                %ul.dropdown-menu
+                  %li
+                    %a{href: "#{logout_path}"} Log out
+            - else
+              %li
+                %a{href: "#{login_path}"}Log in
+              %li
+                %a{href: "#{signup_path}"}Sign up
       .flash
         = flash_messages
 
