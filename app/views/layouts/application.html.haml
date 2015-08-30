@@ -37,19 +37,17 @@
                   %a{href: "#"} Shed
                 %li
                   %a{href: "#"} Tray
-          %ul.nav.navbar-nav.navbar-right
-            - if current_user
-              %li.dropdown
-                %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
-                  != "Logged in as #{current_user}<span class='caret'></span>"
-                %ul.dropdown-menu
-                  %li
-                    %a{href: "#{logout_path}"} Log out
-            - else
-              %li
-                %a{href: "#{login_path}"}Log in
-              %li
-                %a{href: "#{signup_path}"}Sign up
+
+          %ul.nav.navbar-form.navbar-right{role: 'access'}
+            .form-group
+              - if current_user
+                %a{href: "#{logout_path}"}
+                  %button.btn.btn-default.navbar-btn.access-button{type: "button"}= "Log Out #{current_user}"
+              - else
+                %a{href: "#{login_path}"}
+                  %button.btn.btn-default.navbar-btn.access-button{type: "button"} Log in
+                %a{href: "#{signup_path}"}
+                  %button.btn.btn-default.navbar-btn.access-button{type: "button"} Sign in
       .flash
         = flash_messages
 
