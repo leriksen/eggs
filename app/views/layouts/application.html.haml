@@ -10,6 +10,45 @@
     = csrf_meta_tags
   %body
     .container
+      %nav.navbar.navbar-default
+        .navbar-header
+          %button.navbar-toggle.collapsed{data:{toggle: "collapse", target: "#bs-example-navbar-collapse-1"}}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: "#"}
+            Eggs
+
+        .collapse.navbar-collapse{id: "bs-example-navbar-collapse-1"}
+          %ul.nav.navbar-nav
+            %li.dropdown
+              %a.dropdown-toggle{href: "#", data: {toggle: "dropdown"}}
+                Record <span class='caret'></span>
+              %ul.dropdown-menu
+                %li
+                  %a{href: "#"} Shed
+                %li
+                  %a{href: "#"} Tray
+            %li.dropdown
+              %a.dropdown-toggle{href: "#", data: {toggle: "dropdown"}}
+                Reports <span class='caret'></span>
+              %ul.dropdown-menu
+                %li
+                  %a{href: "#"} Shed
+                %li
+                  %a{href: "#"} Tray
+          %ul.nav.navbar-nav.navbar-right
+            %li.dropdown
+              %a.dropdown-toggle{href: "#", data: {toggle: "dropdown"}}
+                User <span class="caret"></span>
+              %ul.dropdown-menu
+                %li
+                  %a{href: "#"}Log in
+                %li
+                  %a{href: "#"}Log out
+                %li
+                  %a{href: "#"}Sign up
+
       .row
         = yield
 
