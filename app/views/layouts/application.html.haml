@@ -43,11 +43,11 @@
                 User <span class="caret"></span>
               %ul.dropdown-menu
                 %li
-                  %a{href: "#"}Log in
+                  %a{href: "#{login_path}"}Log in
                 %li
-                  %a{href: "#"}Log out
+                  %a{href: "#{logout_path}"}Log out
                 %li
-                  %a{href: "#"}Sign up
+                  %a{href: "#{signup_path}"}Sign up
 
       .row
         = yield
