@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: eggs
+  password: eggs
+
+development:
+  <<: *default
+  database: eggs_development
+
+  # The specified database role being used to connect to postgres.
+  # To create additional roles in postgres see `$ createuser --help`.
+  # When left blank, postgres will use the default role. This is
+  # the same name as the operating system user that initialized the database.
+  #username: eggs
+
+  # The password associated with the postgres role (username).
+  #password:
+
+test:
+  <<: *default
+  database: eggs_test
+
+production:
+  <<: *default
+  database: eggs_production
+  password: <%= ENV['EGGS_DATABASE_PASSWORD'] %>
