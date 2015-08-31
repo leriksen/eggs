@@ -25,7 +25,7 @@ group :development, :test do
   gem 'capybara'
 end
 
-group :development, optional: true do
+group :development do
   gem 'pry-state'
   gem 'pry-nav'
   gem 'better_errors'
