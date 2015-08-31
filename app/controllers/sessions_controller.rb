@@ -1,11 +1,8 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
   def create
     user = User.find_by_email(params[:session][:email])
     if user and user.authenticate(params[:session][:password])
-      session[:user] = user.id
+      save_session user.id
       flash[:success] = "Successfully logged in"
       redirect_to root_url
     else
@@ -15,7 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user] = nil
+    clear_session
     flash[:success] = "Successfully logged out"
     redirect_to root_url
   end
