@@ -5,7 +5,7 @@ module SessionsHelper
   end
 
   def clear_session
-    session[:user] = nil
+    session.delete :user
     @current_user = nil
   end
 
