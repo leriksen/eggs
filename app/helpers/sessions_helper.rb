@@ -1,7 +1,7 @@
 module SessionsHelper
 
-  def save_session(user)
-    session[:user] = user
+  def save_session(user_id)
+    session[:user] = user_id
   end
 
   def clear_session
