@@ -28,17 +28,17 @@
                   Record <span class='caret'></span>
                 %ul.dropdown-menu
                   %li
-                    %a{href: "/pages/record_shed"} Shed
+                    =link_to "Shed", new_shed_path
                   %li
-                    %a{href: "/pages/record_tray"} Tray
+                    =link_to "Tray", new_tray_path
               %li.dropdown
                 %a.dropdown-toggle{href: "#", data: {toggle: "dropdown"}}
                   Reports <span class='caret'></span>
                 %ul.dropdown-menu
                   %li
-                    %a{href: "/pages/report_shed"} Shed
+                    =link_to "Sheds", sheds_path
                   %li
-                    %a{href: "/pages/report_tray"} Tray
+                    =link_to "Trays", trays_path
 
           %ul.nav.navbar-form.navbar-right{role: 'access'}
             .form-group
