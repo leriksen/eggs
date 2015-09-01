@@ -18,8 +18,8 @@
             %span.icon-bar
             %span.icon-bar
           %a.navbar-brand{href: "/"}
-            = image_tag(image_path('4eggs.png'), alt: "Eggs-cellent")
-            Eggs-cellent
+            = image_tag(image_path('4eggs.png'), alt: "Eggs-cellent") do
+              Eggs-cellent
 
         .collapse.navbar-collapse{id: "bs-example-navbar-collapse-1"}
           -if current_user
