@@ -31,7 +31,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'guard'
-  gem 'wdm'
   gem 'guard-rspec'
   gem 'ruby_gntp'
 end
