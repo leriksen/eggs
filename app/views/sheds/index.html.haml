@@ -1,0 +1,21 @@
+%h1 Listing sheds
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @sheds.each do |shed|
+      %tr
+        %td= shed.name
+        %td= link_to 'Show', shed
+        %td= link_to 'Edit', edit_shed_path(shed)
+        %td= link_to 'Destroy', shed, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Shed', new_shed_path

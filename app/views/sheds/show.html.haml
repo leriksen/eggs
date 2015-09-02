@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @shed.name
+
+= link_to 'Edit', edit_shed_path(@shed)
+\|
+= link_to 'Back', sheds_path

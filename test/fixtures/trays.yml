@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  washed: 1
+  waste: 1
+  tray_id: 
+
+two:
+  washed: 1
+  waste: 1
+  tray_id: 

@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830040104) do
+ActiveRecord::Schema.define(version: 20150901130908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "sheds", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trays", force: :cascade do |t|
+    t.integer  "washed"
+    t.integer  "waste"
+    t.integer  "shed_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "trays", ["shed_id"], name: "index_trays_on_shed_id", using: :btree
+  add_index "trays", ["user_id"], name: "index_trays_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -25,4 +43,6 @@ ActiveRecord::Schema.define(version: 20150830040104) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "trays", "sheds"
+  add_foreign_key "trays", "users"
 end

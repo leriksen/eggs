@@ -1,0 +1,25 @@
+%h1 Listing trays
+
+%table
+  %thead
+    %tr
+      %th Washed
+      %th Waste
+      %th Tray
+      %th
+      %th
+      %th
+
+  %tbody
+    - @trays.each do |tray|
+      %tr
+        %td= tray.washed
+        %td= tray.waste
+        %td= tray.shed
+        %td= link_to 'Show', tray
+        %td= link_to 'Edit', edit_tray_path(tray)
+        %td= link_to 'Destroy', tray, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Tray', new_tray_path
