@@ -1,4 +1,4 @@
-= form_for @tray do |f|
+= bootstrap_form_for @tray do |f|
   - if @tray.errors.any?
     #error_explanation
       %h2= "#{pluralize(@tray.errors.count, "error")} prohibited this tray from being saved:"
@@ -6,14 +6,7 @@
         - @tray.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :washed
-    = f.number_field :washed
-  .field
-    = f.label :waste
-    = f.number_field :waste
-  .field
-    = f.label :shed
-    = f.collection_select(:shed_id, Shed.all, :id, :name)
-  .actions
-    = f.submit 'Save'
+  = f.number_field :washed
+  = f.number_field :waste
+  = f.collection_select(:shed_id, Shed.all, :id, :name)
+  = f.submit 'Save'
