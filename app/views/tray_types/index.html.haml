@@ -1,0 +1,22 @@
+.page-header
+  = link_to new_tray_type_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Tray type
+  %h1 Listing tray_types
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Type
+        %th
+        %th
+        %th
+
+    %tbody
+      - @tray_types.each do |tray_type|
+        %tr
+          %td= tray_type.type
+          %td= link_to 'Show', tray_type
+          %td= link_to 'Edit', edit_tray_type_path(tray_type)
+          %td= link_to 'Destroy', tray_type, data: { confirm: 'Are you sure?' }, method: :delete

@@ -1,0 +1,6 @@
+= bootstrap_form_for @tray_type, html: { class: "form-horizontal", role: "form" } do |f|
+  - if @tray_type.errors.any?
+    = f.alert_message "#{pluralize(@tray_type.errors.count, "error")} prohibited this tray type from being saved:"
+
+  = f.text_field :type
+  = f.submit class: 'btn btn-primary'
