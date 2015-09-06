@@ -11,4 +11,6 @@ class Tray < ActiveRecord::Base
                       only_integer: true,
                       greater_than_or_equal_to: 0
                     }
+
+  validates :shed, presence: true
 end
