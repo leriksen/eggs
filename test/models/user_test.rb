@@ -57,4 +57,9 @@ class UserTest < ActiveSupport::TestCase
     @user.password = "12345"
     assert_not @user.valid?
   end
+
+  test "email should be a valid email address" do
+    @user.email = "1@1.aa"
+    assert @user.valid?
+  end
 end
