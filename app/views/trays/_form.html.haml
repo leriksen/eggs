@@ -2,6 +2,20 @@
   - if @tray.errors.any?
     = f.alert_message "#{pluralize(@tray.errors.count, 'error')} prohibited this tray from being saved:"
 
+  %h3
+    Types
+    %ul
+      %li dirty
+      %li ground
+      %li clean
+  %h3
+    Processed
+    %ul
+      %li cleaned
+      %li seconds
+      %li jumbos
+      %li waste
+
   = f.number_field :washed, placeholder: "How many were successfully washed ?"
   = f.number_field :waste, placeholder: "How many were considered wasted ?"
   = f.collection_select(:shed_id, Shed.all, :id, :name, {label: "What shed did the tray come from ?"})

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tray_types
   resources :reports
   resources :trays
   resources :sheds
