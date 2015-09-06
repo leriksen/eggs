@@ -1,10 +1,6 @@
 = bootstrap_form_for @tray do |f|
   - if @tray.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@tray.errors.count, "error")} prohibited this tray from being saved:"
-      %ul
-        - @tray.errors.full_messages.each do |msg|
-          %li= msg
+    = f.alert_message "#{pluralize(@user.errors.count, "error")} prohibited this tray from being saved:"
 
   = f.number_field :washed
   = f.number_field :waste
