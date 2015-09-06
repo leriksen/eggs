@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: {within: (6..255)}
   validates :email, presence: true, length: {maximum: 255}, uniqueness: true, email: true
 
+  before_save { self.email = email.downcase }
+  
   def to_s
     "#{first_name} #{last_name}"
   end
