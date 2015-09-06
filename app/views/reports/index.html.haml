@@ -1,0 +1,39 @@
+.page-header
+  %h1 Reports
+  
+  .panel.panel-default
+    .panel-heading        
+      %h3.panel-title Today
+    .panel-body
+      = bootstrap_form_for( @report, html: {class: 'form-inline new-report'}) do |f|
+        .form-group
+          .input-group
+            .input-group-addon Shed
+            = f.collection_select :shed_id, Shed.all, :id, :name, {class: "form-control", hide_label: true}
+        = f.submit "Get Report", class: 'btn btn-primary'
+      
+  .panel.panel-default
+    .panel-heading        
+      %h3.panel-title This Week
+    .panel-body
+      = bootstrap_form_for( @report, html: {class: 'form-inline new-report'}) do |f|
+        .form-group
+          .input-group
+            .input-group-addon Shed
+            = f.collection_select :shed_id, Shed.all, :id, :name, {class: "form-control", hide_label: true}
+        = f.submit "Get Report", class: 'btn btn-primary'
+
+  .panel.panel-default
+    .panel-heading        
+      %h3.panel-title Custom Period
+    .panel-body
+      = bootstrap_form_for( @report, html: {class: 'form-inline new-report'}) do |f|
+        .form-group
+          .input-group
+            .input-group-addon Shed
+            = f.collection_select :shed_id, Shed.all, :id, :name, {class: "form-control", hide_label: true}
+            .input-group-addon From
+            = f.date_select :from_date, selected: Date.today, hide_label: true
+            .input-group-addon To
+            = f.date_select :to_date, selected: Date.today, hide_label: true
+        = f.submit "Get Report", class: 'btn btn-primary'

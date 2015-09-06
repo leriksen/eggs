@@ -31,14 +31,8 @@
                     =link_to "Shed", new_shed_path
                   %li
                     =link_to "Tray", new_tray_path
-              %li.dropdown
-                %a.dropdown-toggle{href: "#", data: {toggle: "dropdown"}}
-                  Reports <span class='caret'></span>
-                %ul.dropdown-menu
-                  %li
-                    =link_to "Sheds", sheds_path
-                  %li
-                    =link_to "Trays", trays_path
+              %li
+                =link_to "Reports", reports_path
 
           %ul.nav.navbar-form.navbar-right{role: 'access'}
             .form-group

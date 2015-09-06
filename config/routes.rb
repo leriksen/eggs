@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reports
   resources :trays
   resources :sheds
   resources :sessions, only: [:new, :create, :destroy]
