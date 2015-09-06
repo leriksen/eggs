@@ -1,8 +1,8 @@
 = bootstrap_form_for @tray do |f|
   - if @tray.errors.any?
-    = f.alert_message "#{pluralize(@user.errors.count, "error")} prohibited this tray from being saved:"
+    = f.alert_message "#{pluralize(@tray.errors.count, 'error')} prohibited this tray from being saved:"
 
-  = f.number_field :washed
-  = f.number_field :waste
-  = f.collection_select(:shed_id, Shed.all, :id, :name)
+  = f.number_field :washed, placeholder: "How many were successfully washed ?"
+  = f.number_field :waste, placeholder: "How many were considered wasted ?"
+  = f.collection_select(:shed_id, Shed.all, :id, :name, {label: "What shed did the tray come from ?"})
   = f.submit 'Save'
