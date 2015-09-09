@@ -38,7 +38,9 @@
             .form-group
               - if current_user?
                 = link_to logout_path, method: :delete do
-                  %button.btn.btn-primary.navbar-btn.access-button{type: "button"}= "Log Out #{current_user}"
+                  %button.btn.btn-primary.navbar-btn.access-button{type: "button"} 
+                    %span.glyphicon.glyphicon-log-out
+                    Log Out #{current_user}
               - else
                 %a{href: "#{login_path}"}
                   %button.btn.btn-primary.navbar-btn.access-button{type: "button"} Log in
