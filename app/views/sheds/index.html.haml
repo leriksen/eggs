@@ -1,21 +1,24 @@
+.page-header
+  = link_to new_shed_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Shed
+
 %h1 Listing sheds
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
-
-  %tbody
-    - @sheds.each do |shed|
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
       %tr
-        %td= shed.name
-        %td= link_to 'Show', shed
-        %td= link_to 'Edit', edit_shed_path(shed)
-        %td= link_to 'Destroy', shed, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th.text-center Name
+        %th
+        %th
 
-%br
-
-= link_to 'New Shed', new_shed_path
+    %tbody
+      - @sheds.each do |shed|
+        %tr
+          %td.text-center
+            = link_to shed.name, shed
+          %td.text-center
+            = link_to 'Edit', edit_shed_path(shed), class: 'btn btn-primary'
+          %td.text-center
+            = link_to 'Destroy', shed, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-default'
