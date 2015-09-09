@@ -1,11 +1,17 @@
+.page-header
+  = link_to new_tray_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Tray
+
 %h1 Listing trays
 
-%table
+%table.table.table-striped.table-hover
   %thead
     %tr
-      %th Washed
-      %th Waste
-      %th Tray
+      %th.text-center Washed
+      %th.text-center Waste
+      %th.text-center Type
+      %th.text-center Shed
       %th
       %th
       %th
@@ -13,13 +19,13 @@
   %tbody
     - @trays.each do |tray|
       %tr
-        %td= tray.washed
-        %td= tray.waste
-        %td= tray.shed
-        %td= link_to 'Show', tray
-        %td= link_to 'Edit', edit_tray_path(tray)
-        %td= link_to 'Destroy', tray, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Tray', new_tray_path
+        %td.text-center= tray.washed
+        %td.text-center= tray.waste
+        %td.text-center= tray.shed
+        %td.text-center= tray.tray_type.type
+        %td.text-center
+          = link_to 'Show', tray, class: 'btn btn-primary'
+        %td.text-center
+          = link_to 'Edit', edit_tray_path(tray), class: 'btn btn-default'
+        %td.text-center
+          = link_to 'Destroy', tray, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-default'

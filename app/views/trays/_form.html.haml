@@ -3,12 +3,6 @@
     = f.alert_message "#{pluralize(@tray.errors.count, 'error')} prohibited this tray from being saved:"
 
   %h3
-    Types
-    %ul
-      %li dirty
-      %li ground
-      %li clean
-  %h3
     Processed
     %ul
       %li cleaned
@@ -18,5 +12,7 @@
 
   = f.number_field :washed, placeholder: "How many were successfully washed ?"
   = f.number_field :waste, placeholder: "How many were considered wasted ?"
+  = f.collection_select(:tray_type_id, TrayType.all, :id, :type, {label: "What type of tray ?"})
   = f.collection_select(:shed_id, Shed.all, :id, :name, {label: "What shed did the tray come from ?"})
+  = f.hidden_field :user_id, value: current_user
   = f.submit 'Save'

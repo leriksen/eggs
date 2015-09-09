@@ -69,6 +69,6 @@ class TraysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tray_params
-      params.require(:tray).permit(:washed, :waste, :tray_id)
+      params.require(:tray).permit(:washed, :waste, :tray_id, :tray_type_id, :shed_id, :user_id)
     end
 end

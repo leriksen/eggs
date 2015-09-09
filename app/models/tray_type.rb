@@ -1,5 +1,6 @@
 class TrayType < ActiveRecord::Base
-
+  has_many :trays
+  
   private
 
   # turn off STI

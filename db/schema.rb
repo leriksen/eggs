@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906235023) do
+ActiveRecord::Schema.define(version: 20150908133354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,15 +29,17 @@ ActiveRecord::Schema.define(version: 20150906235023) do
   end
 
   create_table "trays", force: :cascade do |t|
-    t.integer  "washed",     default: 0
-    t.integer  "waste",      default: 0
+    t.integer  "washed",       default: 0
+    t.integer  "waste",        default: 0
     t.integer  "shed_id"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "tray_type_id"
   end
 
   add_index "trays", ["shed_id"], name: "index_trays_on_shed_id", using: :btree
+  add_index "trays", ["tray_type_id"], name: "index_trays_on_tray_type_id", using: :btree
   add_index "trays", ["user_id"], name: "index_trays_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -52,5 +54,6 @@ ActiveRecord::Schema.define(version: 20150906235023) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "trays", "sheds"
+  add_foreign_key "trays", "tray_types"
   add_foreign_key "trays", "users"
 end
