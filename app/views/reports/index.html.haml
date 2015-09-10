@@ -25,6 +25,9 @@
           .input-group
             .input-group-addon Flock
             = f.collection_select :flock_id, Flock.all, :id, :name, {class: "form-control", hide_label: true}
+            = f.hidden_field :from_date, value: Date.today.at_beginning_of_week
+            = f.hidden_field :to_date, value: Date.today
+
         = f.submit "Get Report", class: 'btn btn-primary'
 
   .panel.panel-default
