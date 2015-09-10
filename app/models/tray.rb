@@ -1,5 +1,5 @@
 class Tray < ActiveRecord::Base
-  belongs_to :shed
+  belongs_to :flock
   belongs_to :user
   belongs_to :tray_type
 

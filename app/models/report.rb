@@ -3,7 +3,7 @@ class Report
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :shed_id, :from_date, :to_date
+  attr_accessor :flock_id, :from_date, :to_date
 
   def persisted?
     false

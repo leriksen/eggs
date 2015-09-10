@@ -1,7 +1,0 @@
-= bootstrap_form_for @shed do |f|
-  - if @shed.errors.any?
-    = f.alert_message "#{pluralize(@shed.errors.count, "error")} prohibited this shed from being saved:"
-
-  = f.text_field :name, placeholder: "Unique shed name..."
-
-  = f.submit 'Save'

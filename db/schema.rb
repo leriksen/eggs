@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(version: 20150910100355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "sheds", force: :cascade do |t|
+  create_table "flocks", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "sheds", ["created_at"], name: "index_sheds_on_created_at", using: :btree
+  add_index "flocks", ["created_at"], name: "index_flocks_on_created_at", using: :btree
 
   create_table "tray_types", force: :cascade do |t|
     t.string   "type"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150910100355) do
   create_table "trays", force: :cascade do |t|
     t.integer  "washed",       default: 0
     t.integer  "waste",        default: 0
-    t.integer  "shed_id"
+    t.integer  "flock_id"
     t.integer  "user_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150910100355) do
   end
 
   add_index "trays", ["created_at"], name: "index_trays_on_created_at", using: :btree
-  add_index "trays", ["shed_id"], name: "index_trays_on_shed_id", using: :btree
+  add_index "trays", ["flock_id"], name: "index_trays_on_flock_id", using: :btree
   add_index "trays", ["tray_type_id"], name: "index_trays_on_tray_type_id", using: :btree
   add_index "trays", ["user_id"], name: "index_trays_on_user_id", using: :btree
 
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150910100355) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
-  add_foreign_key "trays", "sheds"
+  add_foreign_key "trays", "flocks"
   add_foreign_key "trays", "tray_types"
   add_foreign_key "trays", "users"
 end

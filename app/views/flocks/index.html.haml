@@ -1,0 +1,24 @@
+.page-header
+  = link_to new_flock_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Flock
+
+%h1 Flocks
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th.text-center Name
+        %th
+        %th
+
+    %tbody
+      - @flocks.each do |flock|
+        %tr
+          %td.text-center
+            = link_to flock.name, flock
+          %td.text-center
+            = link_to 'Edit', edit_flock_path(flock), class: 'btn btn-primary'
+          %td.text-center
+            = link_to 'Destroy', flock, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-default'

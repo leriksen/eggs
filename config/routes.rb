@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :tray_types
   resources :reports
   resources :trays
-  resources :sheds
+  resources :flocks
   resources :sessions, only: [:new, :create, :destroy]
 
   get 'signup', to: 'users#new'       , as: 'signup'

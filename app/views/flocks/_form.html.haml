@@ -1,0 +1,7 @@
+= bootstrap_form_for @flock do |f|
+  - if @flock.errors.any?
+    = f.alert_message "#{pluralize(@flock.errors.count, "error")} prohibited this flock from being saved:"
+
+  = f.text_field :name, placeholder: "Unique flock name..."
+
+  = f.submit 'Save'

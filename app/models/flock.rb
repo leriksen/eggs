@@ -1,4 +1,4 @@
-class Shed < ActiveRecord::Base
+class Flock < ActiveRecord::Base
   has_many :trays
 
   validates :name,  presence: true,

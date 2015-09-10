@@ -1,0 +1,13 @@
+.page-header
+  = link_to flocks_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_flock_path(@flock), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1= "Flock ##{@flock.id}"
+
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @flock.name
+
