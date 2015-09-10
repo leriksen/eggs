@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  has_many :trays
+  has_many :runs
   
   validates :first_name, presence: true,  length:     {within: (2..20)}
   validates :last_name,  presence: true,  length:     {within: (2..20)}

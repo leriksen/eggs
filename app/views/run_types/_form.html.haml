@@ -1,0 +1,6 @@
+= bootstrap_form_for @run_type, html: { class: "form-horizontal", role: "form" } do |f|
+  - if @run_type.errors.any?
+    = f.alert_message "#{pluralize(@run_type.errors.count, "error")} prohibited this run type from being saved:"
+
+  = f.text_field :type
+  = f.submit class: 'btn btn-primary'

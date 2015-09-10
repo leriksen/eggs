@@ -1,5 +1,5 @@
 class Flock < ActiveRecord::Base
-  has_many :trays
+  has_many :runs
 
   validates :name,  presence: true,
                     length: {within: (2..255)},

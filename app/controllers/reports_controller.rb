@@ -27,7 +27,7 @@ class ReportsController < ApplicationController
     @flock = Flock.find(report_params[:flock_id])
     @from = report_params[:from_date]
     @to   = report_params[:to_date]
-    @trays = Tray.where(created_at: @from.to_time.beginning_of_day..@to.to_time.end_of_day, flock: @flock) 
+    @runs = Run.where(created_at: @from.to_time.beginning_of_day..@to.to_time.end_of_day, flock: @flock) 
     render 'flock_report'
   end
 

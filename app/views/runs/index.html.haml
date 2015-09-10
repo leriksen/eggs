@@ -1,0 +1,31 @@
+.page-header
+  = link_to new_run_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Run
+
+%h1 Runs
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th.text-center Washed
+      %th.text-center Waste
+      %th.text-center Flock
+      %th.text-center Type
+      %th
+      %th
+      %th
+
+  %tbody
+    - @runs.each do |run|
+      %tr
+        %td.text-center= run.washed
+        %td.text-center= run.waste
+        %td.text-center= run.flock
+        %td.text-center= run.run_type.type
+        %td.text-center
+          = link_to 'Show', run, class: 'btn btn-primary'
+        %td.text-center
+          = link_to 'Edit', edit_run_path(run), class: 'btn btn-default'
+        %td.text-center
+          = link_to 'Destroy', run, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-default'

@@ -1,4 +1,4 @@
-%h1 Trays
+%h1 Runs
 
 %table.table.table-striped.table-hover
   %thead
@@ -9,12 +9,12 @@
       %th.text-center Type
 
   %tbody
-    - @trays.each do |tray|
+    - @runs.each do |run|
       %tr
-        %td.text-center= tray.washed
-        %td.text-center= tray.waste
-        %td.text-center= tray.flock
-        %td.text-center= tray.tray_type.type
+        %td.text-center= run.washed
+        %td.text-center= run.waste
+        %td.text-center= run.flock
+        %td.text-center= run.run_type.type
 
 %h1 Totals
 
@@ -26,5 +26,5 @@
 
   %tbody
     %tr
-      %td.text-center= @trays.map{|t| t.washed}.inject(0, :+)
-      %td.text-center= @trays.map{|t| t.waste}.inject(0, :+)
+      %td.text-center= @runs.map{|t| t.washed}.inject(0, :+)
+      %td.text-center= @runs.map{|t| t.waste}.inject(0, :+)

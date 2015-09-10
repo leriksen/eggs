@@ -1,0 +1,28 @@
+.page-header
+  = link_to runs_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_run_path(@run), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1= "Run ##{@run.id}"
+
+%dl.dl-horizontal
+  %dt Washed:
+  %dd= @run.washed
+
+%dl.dl-horizontal
+  %dt Wasted:
+  %dd= @run.waste
+
+%dl.dl-horizontal
+  %dt Flock:
+  %dd= @run.flock.name
+
+%dl.dl-horizontal
+  %dt Run Type:
+  %dd= @run.run_type.type
+
+%dl.dl-horizontal
+  %dt Washer:
+  %dd= @run.user

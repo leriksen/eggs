@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :tray_types
+  resources :run_types
   resources :reports
-  resources :trays
+  resources :runs
   resources :flocks
   resources :sessions, only: [:new, :create, :destroy]
 

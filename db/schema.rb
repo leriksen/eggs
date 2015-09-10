@@ -24,26 +24,26 @@ ActiveRecord::Schema.define(version: 20150910100355) do
 
   add_index "flocks", ["created_at"], name: "index_flocks_on_created_at", using: :btree
 
-  create_table "tray_types", force: :cascade do |t|
+  create_table "run_types", force: :cascade do |t|
     t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "trays", force: :cascade do |t|
-    t.integer  "washed",       default: 0
-    t.integer  "waste",        default: 0
+  create_table "runs", force: :cascade do |t|
+    t.integer  "washed",      default: 0
+    t.integer  "waste",       default: 0
     t.integer  "flock_id"
     t.integer  "user_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "tray_type_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "run_type_id"
   end
 
-  add_index "trays", ["created_at"], name: "index_trays_on_created_at", using: :btree
-  add_index "trays", ["flock_id"], name: "index_trays_on_flock_id", using: :btree
-  add_index "trays", ["tray_type_id"], name: "index_trays_on_tray_type_id", using: :btree
-  add_index "trays", ["user_id"], name: "index_trays_on_user_id", using: :btree
+  add_index "runs", ["created_at"], name: "index_runs_on_created_at", using: :btree
+  add_index "runs", ["flock_id"], name: "index_runs_on_flock_id", using: :btree
+  add_index "runs", ["run_type_id"], name: "index_runs_on_run_type_id", using: :btree
+  add_index "runs", ["user_id"], name: "index_runs_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150910100355) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
-  add_foreign_key "trays", "flocks"
-  add_foreign_key "trays", "tray_types"
-  add_foreign_key "trays", "users"
+  add_foreign_key "runs", "flocks"
+  add_foreign_key "runs", "run_types"
+  add_foreign_key "runs", "users"
 end

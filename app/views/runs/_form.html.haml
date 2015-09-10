@@ -1,0 +1,18 @@
+= bootstrap_form_for @run do |f|
+  - if @run.errors.any?
+    = f.alert_message "#{pluralize(@run.errors.count, 'error')} prohibited this run from being saved:"
+
+  %h3
+    Processed
+    %ul
+      %li cleaned
+      %li seconds
+      %li jumbos
+      %li waste
+
+  = f.number_field :washed, placeholder: "How many were successfully washed ?"
+  = f.number_field :waste, placeholder: "How many were considered wasted ?"
+  = f.collection_select(:run_type_id, RunType.all, :id, :type, {label: "What type of run ?"})
+  = f.collection_select(:flock_id, Flock.all, :id, :name, {label: "What flock did the run come from ?"})
+  = f.hidden_field :user_id, value: session[:user]
+  = f.submit 'Save'

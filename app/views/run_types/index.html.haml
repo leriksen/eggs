@@ -1,0 +1,24 @@
+.page-header
+  = link_to new_run_type_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Run Type
+
+%h1 Run Types
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th.text-center Type
+        %th
+        %th
+
+    %tbody
+      - @run_types.each do |run_type|
+        %tr
+          %td.text-center
+            = link_to run_type.type, run_type
+          %td.text-center
+            = link_to 'Edit', edit_run_type_path(run_type), class: 'btn btn-primary'
+          %td.text-center
+            = link_to 'Destroy', run_type, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-default'
