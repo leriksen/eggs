@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908133354) do
+ActiveRecord::Schema.define(version: 20150910100355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150908133354) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "sheds", ["created_at"], name: "index_sheds_on_created_at", using: :btree
 
   create_table "tray_types", force: :cascade do |t|
     t.string   "type"
@@ -38,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150908133354) do
     t.integer  "tray_type_id"
   end
 
+  add_index "trays", ["created_at"], name: "index_trays_on_created_at", using: :btree
   add_index "trays", ["shed_id"], name: "index_trays_on_shed_id", using: :btree
   add_index "trays", ["tray_type_id"], name: "index_trays_on_tray_type_id", using: :btree
   add_index "trays", ["user_id"], name: "index_trays_on_user_id", using: :btree
