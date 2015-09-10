@@ -1,0 +1,30 @@
+%h1 Trays
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th.text-center Washed
+      %th.text-center Waste
+      %th.text-center Shed
+      %th.text-center Type
+
+  %tbody
+    - @trays.each do |tray|
+      %tr
+        %td.text-center= tray.washed
+        %td.text-center= tray.waste
+        %td.text-center= tray.shed
+        %td.text-center= tray.tray_type.type
+
+%h1 Totals
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th.text-center Washed
+      %th.text-center Waste
+
+  %tbody
+    %tr
+      %td.text-center= @trays.map{|t| t.washed}.inject(0, :+)
+      %td.text-center= @trays.map{|t| t.waste}.inject(0, :+)

@@ -3,18 +3,22 @@
   
   .panel.panel-default
     .panel-heading        
-      %h3.panel-title Today
+      %h2.panel-title
+        %strong Today
     .panel-body
       = bootstrap_form_for( @report, html: {class: 'form-inline new-report'}) do |f|
         .form-group
           .input-group
             .input-group-addon Shed
             = f.collection_select :shed_id, Shed.all, :id, :name, {class: "form-control", hide_label: true}
+            = f.hidden_field :from_date, value: Date.today
+            = f.hidden_field :to_date, value: Date.today
         = f.submit "Get Report", class: 'btn btn-primary'
       
   .panel.panel-default
     .panel-heading        
-      %h3.panel-title This Week
+      %h2.panel-title
+        %strong This Week
     .panel-body
       = bootstrap_form_for( @report, html: {class: 'form-inline new-report'}) do |f|
         .form-group
@@ -25,7 +29,8 @@
 
   .panel.panel-default
     .panel-heading        
-      %h3.panel-title Custom Period
+      %h2.panel-title
+        %strong Custom Period
     .panel-body
       = bootstrap_form_for( @report, html: {class: 'form-inline new-report'}) do |f|
         .form-group

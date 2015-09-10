@@ -26,6 +26,7 @@ class TraysController < ApplicationController
   def create
     @tray = Tray.new(tray_params)
 
+    puts @tray
     respond_to do |format|
       if @tray.save
         format.html { redirect_to @tray, notice: 'Tray was successfully created.' }

@@ -14,5 +14,5 @@
   = f.number_field :waste, placeholder: "How many were considered wasted ?"
   = f.collection_select(:tray_type_id, TrayType.all, :id, :type, {label: "What type of tray ?"})
   = f.collection_select(:shed_id, Shed.all, :id, :name, {label: "What shed did the tray come from ?"})
-  = f.hidden_field :user_id, value: current_user
+  = f.hidden_field :user_id, value: session[:user]
   = f.submit 'Save'
