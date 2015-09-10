@@ -5,7 +5,7 @@
   = link_to edit_tray_type_path(@tray_type), class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-pencil
     Edit
-  %h1 Show tray_type
+  %h1= "Tray Type ##{@tray_type.id}"
 
 %dl.dl-horizontal
   %dt Type:

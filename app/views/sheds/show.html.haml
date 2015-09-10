@@ -1,9 +1,13 @@
-%p#notice= notice
+.page-header
+  = link_to sheds_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_shed_path(@shed), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1= "Shed ##{@shed.id}"
 
-%p
-  %b Name:
-  = @shed.name
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @shed.name
 
-= link_to 'Edit', edit_shed_path(@shed)
-\|
-= link_to 'Back', sheds_path

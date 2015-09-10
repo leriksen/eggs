@@ -1,23 +1,28 @@
-%p#notice= notice
+.page-header
+  = link_to trays_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_tray_path(@tray), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1= "Tray ##{@tray.id}"
 
-%p
-  %b Washed:
-  = @tray.washed
-%p
-  %b Waste:
-  = @tray.waste
-%p
-  %b Shed:
-  = @tray.shed
+%dl.dl-horizontal
+  %dt Washed:
+  %dd= @tray.washed
 
-%p
-  %b Tray Type:
-  = @tray.tray_type.type
+%dl.dl-horizontal
+  %dt Wasted:
+  %dd= @tray.waste
 
-%p
-  %b User:
-  = @tray.user
+%dl.dl-horizontal
+  %dt Shed:
+  %dd= @tray.shed.name
 
-= link_to 'Edit', edit_tray_path(@tray)
-\|
-= link_to 'Back', trays_path
+%dl.dl-horizontal
+  %dt Tray Type:
+  %dd= @tray.tray_type.type
+
+%dl.dl-horizontal
+  %dt Washer:
+  %dd= @tray.user
