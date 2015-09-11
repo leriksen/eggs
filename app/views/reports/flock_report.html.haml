@@ -3,7 +3,10 @@
 %table.table.table-striped.table-hover
   %thead
     %tr
+      %th.text-center Delivered
       %th.text-center Standard
+      %th.text-center Seconds
+      %th.text-center Jumbo
       %th.text-center Waste
       %th.text-center Flock
       %th.text-center Type
@@ -12,7 +15,10 @@
   %tbody
     - @runs.each do |run|
       %tr
+        %td.text-center= run.delivered
         %td.text-center= run.standard
+        %td.text-center= run.seconds
+        %td.text-center= run.jumbo
         %td.text-center= run.waste
         %td.text-center= run.flock
         %td.text-center= run.run_type.type
