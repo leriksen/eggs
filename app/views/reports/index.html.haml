@@ -41,7 +41,7 @@
             .input-group-addon Flock
             = f.collection_select :flock_id, Flock.all, :id, :name, {class: "form-control", hide_label: true}
             .input-group-addon From
-            = f.date_select :from_date, selected: Date.today, hide_label: true
+            = f.text_field :from_date, value: Date.today, hide_label: true, class: "datepicker"
             .input-group-addon To
-            = f.date_select :to_date, selected: Date.today, hide_label: true
+            = f.text_field :to_date, value: Date.today, hide_label: true, class: "datepicker"
         = f.submit "Get Report", class: 'btn btn-primary'

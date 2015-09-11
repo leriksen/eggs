@@ -7,6 +7,7 @@
       %th.text-center Waste
       %th.text-center Flock
       %th.text-center Type
+      %th.text-center Washer
 
   %tbody
     - @runs.each do |run|
@@ -15,6 +16,7 @@
         %td.text-center= run.waste
         %td.text-center= run.flock
         %td.text-center= run.run_type.type
+        %td.text-center= run.user
 
 %h1 Totals
 

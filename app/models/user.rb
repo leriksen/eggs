@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
 
-  def name
+  def to_s
     "#{first_name} #{last_name}"
   end
 end
