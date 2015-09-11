@@ -8,7 +8,7 @@
 %table.table.table-striped.table-hover
   %thead
     %tr
-      %th.text-center Washed
+      %th.text-center Standard
       %th.text-center Waste
       %th.text-center Flock
       %th.text-center Type
@@ -20,7 +20,7 @@
   %tbody
     - @runs.each do |run|
       %tr
-        %td.text-center= run.washed
+        %td.text-center= run.standard
         %td.text-center= run.waste
         %td.text-center= run.flock
         %td.text-center= run.run_type.type

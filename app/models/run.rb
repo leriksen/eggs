@@ -3,12 +3,23 @@ class Run < ActiveRecord::Base
   belongs_to :user
   belongs_to :run_type
 
-  validates :washed, numericality: {
+  validates :standard, numericality: {
                                       only_integer: true,
                                       greater_than_or_equal_to: 0
                                     }
-  
   validates :waste, numericality: {
+                                    only_integer: true,
+                                    greater_than_or_equal_to: 0
+                                  }
+  validates :delivered, numericality: {
+                                      only_integer: true,
+                                      greater_than_or_equal_to: 0
+                                    }
+  validates :seconds, numericality: {
+                                    only_integer: true,
+                                    greater_than_or_equal_to: 0
+                                  }
+  validates :jumbo, numericality: {
                                     only_integer: true,
                                     greater_than_or_equal_to: 0
                                   }

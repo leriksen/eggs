@@ -8,8 +8,20 @@
   %h1= "Run ##{@run.id}"
 
 %dl.dl-horizontal
-  %dt Washed:
-  %dd= @run.washed
+  %dt Delivered:
+  %dd= @run.delivered
+
+%dl.dl-horizontal
+  %dt Standard:
+  %dd= @run.standard
+
+%dl.dl-horizontal
+  %dt Seconds:
+  %dd= @run.seconds
+
+%dl.dl-horizontal
+  %dt Jumbos:
+  %dd= @run.jumbo
 
 %dl.dl-horizontal
   %dt Wasted:

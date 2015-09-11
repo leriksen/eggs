@@ -3,7 +3,7 @@
 %table.table.table-striped.table-hover
   %thead
     %tr
-      %th.text-center Washed
+      %th.text-center Standard
       %th.text-center Waste
       %th.text-center Flock
       %th.text-center Type
@@ -12,7 +12,7 @@
   %tbody
     - @runs.each do |run|
       %tr
-        %td.text-center= run.washed
+        %td.text-center= run.standard
         %td.text-center= run.waste
         %td.text-center= run.flock
         %td.text-center= run.run_type.type
@@ -23,10 +23,16 @@
 %table.table.table-striped.table-hover
   %thead
     %tr
-      %th.text-center Washed
+      %th.text-center Delivered
+      %th.text-center Standard
+      %th.text-center Seconds
+      %th.text-center Jumbo
       %th.text-center Waste
 
   %tbody
     %tr
-      %td.text-center= @runs.map{|t| t.washed}.inject(0, :+)
-      %td.text-center= @runs.map{|t| t.waste}.inject(0, :+)
+      %td.text-center= @runs.map{|t| t.delivered || 0}.inject(0, :+)
+      %td.text-center= @runs.map{|t| t.standard  || 0}.inject(0, :+)
+      %td.text-center= @runs.map{|t| t.seconds   || 0}.inject(0, :+)
+      %td.text-center= @runs.map{|t| t.jumbo     || 0}.inject(0, :+)
+      %td.text-center= @runs.map{|t| t.waste     || 0}.inject(0, :+)

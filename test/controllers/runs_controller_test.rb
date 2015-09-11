@@ -18,7 +18,7 @@ class RunsControllerTest < ActionController::TestCase
 
   test "should create run" do
     assert_difference('Run.count') do
-      post :create, run: { run_id: @run.run_id, washed: @run.washed, waste: @run.waste }
+      post :create, run: { run_id: @run.run_id, standard: @run.standard, waste: @run.waste }
     end
 
     assert_redirected_to run_path(assigns(:run))
@@ -35,7 +35,7 @@ class RunsControllerTest < ActionController::TestCase
   end
 
   test "should update run" do
-    patch :update, id: @run, run: { run_id: @run.run_id, washed: @run.washed, waste: @run.waste }
+    patch :update, id: @run, run: { run_id: @run.run_id, standard: @run.standard, waste: @run.waste }
     assert_redirected_to run_path(assigns(:run))
   end
 

@@ -26,7 +26,13 @@ class RunsController < ApplicationController
   def create
     @run = Run.new(run_params)
 
-    puts @run
+    @run.delivered ||= 0
+    @run.standard  ||= 0
+    @run.jumbo     ||= 0
+    @run.seconds   ||= 0
+
+    @run.waste = @run.delivered - @run.standard - @run.jumbo - @run.seconds
+    
     respond_to do |format|
       if @run.save
         format.html { redirect_to @run, notice: 'Run was successfully created.' }
@@ -70,6 +76,6 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:washed, :waste, :run_id, :run_type_id, :flock_id, :user_id)
+      params.require(:run).permit(:delivered, :standard, :seconds, :jumbo, :run_id, :run_type_id, :flock_id, :user_id)
     end
 end
