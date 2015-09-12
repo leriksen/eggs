@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
-  helper SessionsHelper
   
   def create
+    logger.debug "in SessionsController::create"
     user = User.find_by_email(params[:session][:email])
     if user and user.authenticate(params[:session][:password])
-      save_session user.id
+      log_in user
       flash[:success] = "Successfully logged in"
+      remember user
       redirect_to root_url
     else
       flash.now[:error] = "Invalid email/password combination"
@@ -14,6 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    logger.debug "in SessionsController::destroy"
     clear_session
     flash[:success] = "Successfully logged out"
     redirect_to root_url
