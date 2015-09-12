@@ -1,0 +1,12 @@
+%ul.nav.navbar-form.navbar-right{role: 'access'}
+  .form-group
+    - if current_user?
+      = link_to logout_path, method: :delete do
+        %button.btn.btn-primary.navbar-btn.access-button{type: "button"} 
+          %span.glyphicon.glyphicon-log-out
+          Log Out #{current_user}
+    - else
+      %a{href: "#{login_path}"}
+        %button.btn.btn-primary.navbar-btn.access-button{type: "button"} Log in
+      %a{href: "#{signup_path}"}
+        %button.btn.btn-default.navbar-btn.access-button{type: "button"} Sign up
