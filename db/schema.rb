@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913215555) do
+ActiveRecord::Schema.define(version: 20150913220848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,13 @@ ActiveRecord::Schema.define(version: 20150913215555) do
     t.integer  "waste",       default: 0
     t.integer  "flock_id"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "run_type_id"
     t.integer  "delivered"
     t.integer  "seconds"
     t.integer  "jumbo"
+    t.boolean  "active",      default: true
   end
 
   add_index "runs", ["created_at"], name: "index_runs_on_created_at", using: :btree

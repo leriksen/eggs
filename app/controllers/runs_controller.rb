@@ -61,10 +61,16 @@ class RunsController < ApplicationController
   # DELETE /runs/1
   # DELETE /runs/1.json
   def destroy
-    @run.destroy
+    @run.active = false
+  
     respond_to do |format|
-      format.html { redirect_to runs_url, notice: 'Run was successfully destroyed.' }
-      format.json { head :no_content }
+      if @run.save
+        format.html { redirect_to root_url, notice: 'Run was successfully deactivated.'}
+        format.json { head :no_content }
+      else
+        format.html { render :show }
+        format.json { render json: @run.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -76,6 +82,6 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:delivered, :standard, :seconds, :jumbo, :run_id, :run_type_id, :flock_id, :user_id)
+      params.require(:run).permit(:delivered, :standard, :seconds, :jumbo, :run_id, :run_type_id, :flock_id, :user_id, :active)
     end
 end
