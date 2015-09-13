@@ -10,6 +10,7 @@
     %thead
       %tr
         %th.text-center Type
+        %th.text-center Actice
         %th
         %th
 
@@ -18,6 +19,8 @@
         %tr
           %td.text-center
             = link_to run_type.type, run_type
+          %td.text-center
+            = link_to run_type.active, run_type
           %td.text-center
             = link_to 'Edit', edit_run_type_path(run_type), class: 'btn btn-primary'
           %td.text-center

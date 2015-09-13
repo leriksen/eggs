@@ -61,6 +61,21 @@ class RunTypesController < ApplicationController
     end
   end
 
+  def destroy
+    @run_type.active = false
+  
+    respond_to do |format|
+      if @run_type.save
+
+        format.html { redirect_to root_url, notice: 'Run Type was successfully deactivated.'}
+        format.json { head :no_content }
+      else
+        format.html { render :show }
+        format.json { render json: @run_type.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_run_type
@@ -69,6 +84,6 @@ class RunTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_type_params
-      params.require(:run_type).permit(:type)
+      params.require(:run_type).permit(:type, :active)
     end
 end

@@ -3,4 +3,8 @@
     = f.alert_message "#{pluralize(@run_type.errors.count, "error")} prohibited this run type from being saved:"
 
   = f.text_field :type
+
+  - if params[:action] == 'edit'
+    = f.check_box :active
+
   = f.submit class: 'btn btn-primary'
