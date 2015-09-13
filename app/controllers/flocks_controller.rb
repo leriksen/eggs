@@ -54,10 +54,16 @@ class FlocksController < ApplicationController
   # DELETE /flocks/1
   # DELETE /flocks/1.json
   def destroy
-    @flock.destroy
+    @flock.active = false
+  
     respond_to do |format|
-      format.html { redirect_to flocks_url, notice: 'Flock was successfully destroyed.' }
-      format.json { head :no_content }
+      if @flock.save
+        format.html { redirect_to root_url, notice: 'Flock was successfully deactivated.'}
+        format.json { head :no_content }
+      else
+        format.html { render :show }
+        format.json { render json: @flock.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -69,6 +75,6 @@ class FlocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flock_params
-      params.require(:flock).permit(:name)
+      params.require(:flock).permit(:name, :active)
     end
 end

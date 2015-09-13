@@ -4,4 +4,8 @@
 
   = f.text_field :name, placeholder: "Unique flock name..."
 
+  -if params[:action] == 'edit'
+    = f.check_box :active
+  end
+
   = f.submit 'Save'

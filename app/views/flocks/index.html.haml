@@ -19,6 +19,8 @@
           %td.text-center
             = link_to flock.name, flock
           %td.text-center
+            = link_to flock.active, flock
+          %td.text-center
             = link_to 'Edit', edit_flock_path(flock), class: 'btn btn-primary'
           %td.text-center
             = link_to 'Destroy', flock, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-default'

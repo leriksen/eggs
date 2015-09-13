@@ -1,1 +1,1 @@
-json.extract! @flock, :id, :name, :created_at, :updated_at
+json.extract! @flock, :id, :name, :active, :created_at, :updated_at
