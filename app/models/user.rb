@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def authenticated?(param_token)
+    return false if remember_digest.nil?
     BCrypt::Password.new(param_token).is_password? remember_token
   end
 
