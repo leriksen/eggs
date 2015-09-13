@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   
   def create
-    logger.debug "in SessionsController::create"
     user = User.find_by_email(params[:session][:email])
     if user and user.authenticate(params[:session][:password])
       log_in user
@@ -15,8 +14,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logger.debug "in SessionsController::destroy"
-    clear_session
+    logger.debug "logging out - logged in ? #{logged_in?}"
+    log_out if logged_in?
     flash[:success] = "Successfully logged out"
     redirect_to root_url
   end

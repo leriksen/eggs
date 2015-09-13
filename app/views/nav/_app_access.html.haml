@@ -1,6 +1,6 @@
 %ul.nav.navbar-form.navbar-right{role: 'access'}
   .form-group
-    - if current_user?
+    - if logged_in?
       = link_to logout_path, method: :delete do
         %button.btn.btn-primary.navbar-btn.access-button{type: "button"} 
           %span.glyphicon.glyphicon-log-out

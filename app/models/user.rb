@@ -19,23 +19,20 @@ class User < ActiveRecord::Base
   end
 
   def remember
-    logger.debug "in User::remember"
     self.remember_token = self.class.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
-    logger.debug "user==#{user.inspect}"
+  end
+
+  def forget
+    update_attribute(:remember_digest, nil)
   end
 
   def authenticated?(param_token)
-    logger.debug "in User::authenticated"
-    logger.debug "param token #{param_token}"
-    logger.debug "as password #{BCrypt::Password.new param_token}"
-    logger.debug "remem token #{remember_token}"
     BCrypt::Password.new(param_token).is_password? remember_token
   end
 
   class << self
     def new_token
-      logger.debug "in User.new_token"
       SecureRandom.urlsafe_base64
     end
 

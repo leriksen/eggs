@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    logger.debug "@user==#{@user.inspect}"
   end
 
   # GET /users/1/edit
@@ -31,8 +30,6 @@ class UsersController < ApplicationController
       if @user.save
         log_in @user
         flash[:success] = "Successfully signed up"
-
-        logger.debug "in UsersController::create - @current_user==#{@current_user.inspect}"
 
         format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @user }
