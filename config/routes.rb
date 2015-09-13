@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :run_types
-  resources :reports
+  resources :reports, only: [:index, :create]
   resources :runs
   resources :flocks
   resources :sessions, only: [:new, :create, :destroy]
