@@ -1,27 +1,30 @@
-%h1 Listing users
+.page-header
+  = link_to new_run_type_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Run Type
 
-%table.table.table-striped.table-hover
-  %thead
-    %tr
-      %th First name
-      %th Last name
-      %th Email
-      %th Password
-      %th
-      %th
-      %th
+%h1 Users
 
-  %tbody
-    - @users.each do |user|
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
       %tr
-        %td= user.first_name
-        %td= user.last_name
-        %td= user.email
-        %td= user.password
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th.text-center Name
+      %th.text-center Email
+      %th.text-center Active?
+      %th
+      %th
 
-%br
-
-= link_to 'New User', new_user_path
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td.text-center
+            = link_to "#{user}", user
+          %td.text-center 
+            = link_to user.email, user
+          %td.text-center 
+            = link_to user.active, user
+          %td.text-center
+            = link_to 'Edit', edit_user_path(user)
+          %td.text-center
+            = link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }

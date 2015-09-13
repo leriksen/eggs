@@ -1,7 +1,12 @@
+.page-header
+  = link_to flocks_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to flock_path(@flock), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-bookmark
+    Show
+
 %h1 Editing flock
 
 = render 'form'
 
-= link_to 'Show', @flock
-\|
-= link_to 'Back', flocks_path

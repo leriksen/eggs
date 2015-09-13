@@ -1,5 +1,8 @@
+.page-header
+  = link_to runs_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+
 %h1 New run
 
 = render 'form'
-
-= link_to 'Back', runs_path

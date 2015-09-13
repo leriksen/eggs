@@ -43,13 +43,27 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
+    params = user_params
+
+    # not updating password
+    if params[:password].empty?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    begin
+      params.each do |key, value|
+        @user.update_attribute(key, value)
+      end
+    rescue => e
+      respond_to do |format|
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
       end
     end
   end
@@ -57,10 +71,19 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
+    @user.active = false
+  
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+      if @user.save
+        log_out @user
+        forget @user
+
+        format.html { redirect_to root_url, notice: 'User was successfully deactivated.'}
+        format.json { head :no_content }
+      else
+        format.html { render :show }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -72,6 +95,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :active, :password, :password_confirmation)
     end
 end
