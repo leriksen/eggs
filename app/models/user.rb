@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
 
   has_many :runs
   
+  scope :active, -> {where(active: true)}
+  scope :inactive, -> {where(active: false)}
+
   validates :first_name, presence: true,  length:     {within: (2..20)}
   validates :last_name,  presence: true,  length:     {within: (2..20)}
   validates :password,   presence: true,  length:     {within: (6..255)}

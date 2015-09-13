@@ -10,7 +10,7 @@
         .form-group
           .input-group
             .input-group-addon Flock
-            = f.collection_select :flock_id, Flock.all, :id, :name, {class: "form-control", hide_label: true}
+            = f.collection_select :flock_id, Flock.active, :id, :name, {class: "form-control", hide_label: true}
             = f.hidden_field :from_date, value: Date.today
             = f.hidden_field :to_date, value: Date.today
         = f.submit "Get Report", class: 'btn btn-primary'
@@ -24,7 +24,7 @@
         .form-group
           .input-group
             .input-group-addon Flock
-            = f.collection_select :flock_id, Flock.all, :id, :name, {class: "form-control", hide_label: true}
+            = f.collection_select :flock_id, Flock.active, :id, :name, {class: "form-control", hide_label: true}
             = f.hidden_field :from_date, value: Date.today.at_beginning_of_week
             = f.hidden_field :to_date, value: Date.today
 
@@ -39,9 +39,26 @@
         .form-group
           .input-group
             .input-group-addon Flock
-            = f.collection_select :flock_id, Flock.all, :id, :name, {class: "form-control", hide_label: true}
+            = f.collection_select :flock_id, Flock.active, :id, :name, {class: "form-control", hide_label: true}
             .input-group-addon From
             = f.text_field :from_date, value: Date.today, hide_label: true, class: "datepicker"
             .input-group-addon To
             = f.text_field :to_date, value: Date.today, hide_label: true, class: "datepicker"
+        = f.submit "Get Report", class: 'btn btn-primary'
+
+  .panel.panel-default
+    .panel-heading        
+      %h2.panel-title
+        %strong Inactive Flocks
+    .panel-body
+      = bootstrap_form_for( @report, html: {class: 'form-inline new-report'}) do |f|
+        .form-group
+          .input-group
+            .input-group-addon Flock
+            = f.collection_select :flock_id, Flock.inactive, :id, :name, {class: "form-control", hide_label: true}
+            .input-group-addon From
+            = f.text_field :from_date, value: Date.today, hide_label: true, class: "datepicker"
+            .input-group-addon To
+            = f.text_field :to_date, value: Date.today, hide_label: true, class: "datepicker"
+          = f.hidden_field :active, value: false
         = f.submit "Get Report", class: 'btn btn-primary'

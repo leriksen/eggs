@@ -6,8 +6,8 @@
   = f.number_field :standard, placeholder: "How many were considered standard ?"
   = f.number_field :seconds, placeholder: "How many were considered seconds ?"
   = f.number_field :jumbo, placeholder: "How many were considered jumbo ?"
-  = f.collection_select(:run_type_id, RunType.all, :id, :type, {label: "What type of run ?"})
-  = f.collection_select(:flock_id, Flock.all, :id, :name, {label: "What flock did the run come from ?"})
+  = f.collection_select(:run_type_id, RunType.active, :id, :type, {label: "What type of run ?"})
+  = f.collection_select(:flock_id, Flock.active, :id, :name, {label: "What flock did the run come from ?"})
 
   -if params[:action] == 'edit'
     =f.check_box :active

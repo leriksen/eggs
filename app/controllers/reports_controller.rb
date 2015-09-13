@@ -13,7 +13,7 @@ class ReportsController < ApplicationController
     @flock = Flock.find(report_params[:flock_id])
     @from = report_params[:from_date]
     @to   = report_params[:to_date]
-    @runs = Run.where(created_at: @from.to_time.beginning_of_day..@to.to_time.end_of_day, flock: @flock) 
+    @runs = Run.where(created_at: @from.to_time.beginning_of_day..@to.to_time.end_of_day, flock: @flock, active: (params[:active]||true))
     render 'flock_report'
   end
 
@@ -25,6 +25,6 @@ class ReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:flock_id, :from_date, :to_date)
+      params.require(:report).permit(:flock_id, :from_date, :to_date, :active)
     end
 end
