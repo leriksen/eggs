@@ -54,7 +54,6 @@ class Run < ActiveRecord::Base
               value += new_value
             end
             send("#{type}=", value)
-            save
           end
         end
       end

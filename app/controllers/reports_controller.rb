@@ -25,6 +25,9 @@ class ReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:flock_id, :from_date, :to_date, :active)
+      params.require(:report).permit( :flock_id,
+                                      :from_date,
+                                      :to_date,
+                                      :active)
     end
 end

@@ -26,6 +26,10 @@ class RunsController < ApplicationController
   def create
     @run = Run.new(run_params)
 
+    logger.debug run_params.inspect
+
+    logger.debug @run
+    
     @run.delivered ||= 0
     @run.standard  ||= 0
     @run.jumbo     ||= 0
@@ -82,6 +86,18 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:delivered, :standard, :seconds, :jumbo, :run_id, :run_type_id, :flock_id, :user_id, :active)
+      params.require(:run).permit(:delivered_trays,
+                                  :delivered_singles,
+                                  :standard_trays,
+                                  :standard_singles,
+                                  :seconds_trays,
+                                  :seconds_singles,
+                                  :jumbo_trays,
+                                  :jumbo_singles,
+                                  :run_type_id,
+                                  :flock_id,
+                                  :user_id,
+                                  :run_id,
+                                  :active)
     end
 end
