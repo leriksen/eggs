@@ -1,26 +1,30 @@
-= bootstrap_form_for @run do |f|
+= bootstrap_form_for @run, layout: :inline do |f|
   - if @run.errors.any?
     = f.alert_message "#{pluralize(@run.errors.count, 'error')} prohibited this run from being saved:"
 
   - %w(delivered standard seconds jumbo).each do |egg_type|
-    .row
-      .col-md-6
-        = f.number_field "#{egg_type}_trays".to_sym  , placeholder: "How many trays were #{egg_type} from flock ?"
-      .col-md-6
-        = f.number_field "#{egg_type}_singles".to_sym, placeholder: "How many were #{egg_type} singles from flock ?"
+    .row.col-md-8
+      .panel.panel-default
+        .panel-heading.lead= egg_type.capitalize
+        .panel-body
+          .form-group.pull-left
+            = f.number_field "#{egg_type}_trays".to_sym  , placeholder: "How many trays were #{egg_type} from flock ?", class: "form-control"
+          .form-group.pull-right
+            = f.number_field "#{egg_type}_singles".to_sym, placeholder: "How many were #{egg_type} singles from flock ?", class: "form-control"
 
-  .row
-    .col-md-12
-      = f.collection_select(:run_type_id, RunType.active, :id, :type, {label: "What type of run ?"})
-    .col-md-12
-      = f.collection_select(:flock_id, Flock.active, :id, :name, {label: "What flock did the run come from ?"})
+  .row.col-md-8
+    .panel.panel-default
+      .panel-heading.lead= "Run Details"
+      .panel-body
+        .form-group.pull-left
+          = f.collection_select(:run_type_id, RunType.active, :id, :type, {label: "What type of run ?"})
+        .form-group.pull-right
+          = f.collection_select(:flock_id, Flock.active, :id, :name, {label: "What flock did the run come from ?"})
 
   -if params[:action] == 'edit'
-    .row
-      .col-md-12
-        =f.check_box :active
+    .row.col-md-8
+      =f.check_box :active
   
-  .row
-    .col-md-12
-      = f.hidden_field :user_id, value: session[:user]
-      = f.submit 'Save'
+  .row.col-md-8
+    = f.hidden_field :user_id, value: session[:user]
+    = f.submit 'Save'

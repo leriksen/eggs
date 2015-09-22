@@ -25,10 +25,6 @@ class RunsController < ApplicationController
   # POST /runs.json
   def create
     @run = Run.new(run_params)
-
-    logger.debug run_params.inspect
-
-    logger.debug @run
     
     @run.delivered ||= 0
     @run.standard  ||= 0
