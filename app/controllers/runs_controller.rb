@@ -47,8 +47,22 @@ class RunsController < ApplicationController
   # PATCH/PUT /runs/1
   # PATCH/PUT /runs/1.json
   def update
+    run = {}
+
+    run[:delivered] = (run_params[:delivered_trays].to_i * 36) + run_params[:delivered_singles].to_i
+    run[:standard]  = (run_params[:standard_trays].to_i  * 36) + run_params[:standard_singles].to_i
+    run[:jumbo]     = (run_params[:jumbo_trays].to_i     * 36) + run_params[:jumbo_singles].to_i
+    run[:seconds]   = (run_params[:seconds_trays].to_i   * 36) + run_params[:seconds_singles].to_i
+
+    run[:waste] = run[:delivered] - run[:standard] - run[:jumbo] - run[:seconds]
+    
+    run[:run_type_id] = run_params[:run_type_id]
+    run[:flock_id] = run_params[:flock_id]
+    run[:user_id] = run_params[:user_id]
+    run[:active] = run_params[:active]
+
     respond_to do |format|
-      if @run.update(run_params)
+      if @run.update(run)
         format.html { redirect_to @run, notice: 'Run was successfully updated.' }
         format.json { render :show, status: :ok, location: @run }
       else

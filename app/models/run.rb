@@ -42,19 +42,6 @@ class Run < ActiveRecord::Base
               value.present? ? value % EGGS_PER_TRAY : 0
             end
           end
-
-          define_method "#{type}_#{amount}=" do |new_value|
-            value = send("#{type}")
-            value ||= 0
-            new_value = new_value.to_i
-            case amount
-            when "trays"
-              value += new_value * EGGS_PER_TRAY
-            when "singles"
-              value += new_value
-            end
-            send("#{type}=", value)
-          end
         end
       end
     end
