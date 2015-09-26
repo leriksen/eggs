@@ -24,15 +24,9 @@ class RunsController < ApplicationController
   # POST /runs
   # POST /runs.json
   def create
-    @run = Run.new(run_params)
-    
-    @run.delivered ||= 0
-    @run.standard  ||= 0
-    @run.jumbo     ||= 0
-    @run.seconds   ||= 0
+    @run = Run.new
+    @run.extract_run(run_params)
 
-    @run.waste = @run.delivered - @run.standard - @run.jumbo - @run.seconds
-    
     respond_to do |format|
       if @run.save
         format.html { redirect_to @run, notice: 'Run was successfully created.' }
@@ -47,8 +41,9 @@ class RunsController < ApplicationController
   # PATCH/PUT /runs/1
   # PATCH/PUT /runs/1.json
   def update
+    @run.extract_run(run_params)
     respond_to do |format|
-      if @run.update(@run.extract_run(run_params))
+      if @run.save
         format.html { redirect_to @run, notice: 'Run was successfully updated.' }
         format.json { render :show, status: :ok, location: @run }
       else

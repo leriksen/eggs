@@ -24,6 +24,9 @@
   -if params[:action] == 'edit'
     .row.col-md-8
       =f.check_box :active
+  -else
+    = f.hidden_field :active, value: true
+
   
   .row.col-md-8
     = f.hidden_field :user_id, value: session[:user]
