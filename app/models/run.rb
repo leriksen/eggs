@@ -49,4 +49,21 @@ class Run < ActiveRecord::Base
 
   build_virtual_attrs
 
+  def extract_run(run_params)
+    run = {}
+
+    run[:delivered] = (run_params[:delivered_trays].to_i * 36) + run_params[:delivered_singles].to_i
+    run[:standard]  = (run_params[:standard_trays].to_i  * 36) + run_params[:standard_singles].to_i
+    run[:jumbo]     = (run_params[:jumbo_trays].to_i     * 36) + run_params[:jumbo_singles].to_i
+    run[:seconds]   = (run_params[:seconds_trays].to_i   * 36) + run_params[:seconds_singles].to_i
+
+    run[:waste] = run[:delivered] - run[:standard] - run[:jumbo] - run[:seconds]
+    
+    run[:run_type_id] = run_params[:run_type_id]
+    run[:flock_id] = run_params[:flock_id]
+    run[:user_id] = run_params[:user_id]
+    run[:active] = run_params[:active]
+
+    run
+  end
 end
