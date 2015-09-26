@@ -20,7 +20,7 @@
 
       - if Rails.env.development?
         = debug(params)
-        = debug(session[:user])
+        = debug(session: "#{current_user || 'empty'}")
 
     = render 'shared/footer'
         
