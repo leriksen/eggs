@@ -63,4 +63,8 @@ class Run < ActiveRecord::Base
     self.user_id = run_params[:user_id]
     self.active = run_params[:active]
   end
+
+  def waste_percentage
+    (waste.to_f/delivered.to_f) * 100.0
+  end
 end

@@ -19,7 +19,7 @@
         %td.text-center= run.standard
         %td.text-center= run.seconds
         %td.text-center= run.jumbo
-        %td.text-center= run.waste
+        %td.text-center= "#{run.waste} (#{sprintf("%.2f", run.waste_percentage)}%)"
         %td.text-center= run.flock
         %td.text-center= run.run_type.type
         %td.text-center= run.user
