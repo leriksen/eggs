@@ -27,7 +27,7 @@ class Run < ActiveRecord::Base
                                     greater_than_or_equal_to: 0
                                   }
 
-  EGGS_PER_TRAY = 36
+  EGGS_PER_TRAY = 30
 
   class << self
     def build_virtual_attrs
